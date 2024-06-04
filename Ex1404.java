@@ -1,6 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
-
+import java.awt.event.*;
 public class Ex1404 extends JFrame {
 	
 	public Ex1404() {
@@ -34,8 +34,23 @@ public class Ex1404 extends JFrame {
 		btnPanel.setLayout(new GridLayout(2, 2, 10, 5));
 		
 		add(btnPanel);
+		
 		JButton plus = new JButton("+");
 		btnPanel.add(plus);
+		
+		// +ActionListener 추가
+		plus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource() == plus) { // 더하기 버튼인지 확인
+					int num01 = Integer.parseInt(num1.getText());
+					int num02 = Integer.parseInt(num2.getText());
+					
+					int result = num01 / num02;
+					lbl2.setText(String.valueOf(result));
+				
+				}
+			}
+		});
 		JButton minus = new JButton("-");
 		btnPanel.add(minus);
 		JButton mult = new JButton("*");
